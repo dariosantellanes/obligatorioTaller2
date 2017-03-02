@@ -1,5 +1,6 @@
 function inicializar() {
 
+
     iniciarValidacionFormularios();
 
     $(".oculto").hide();
@@ -90,6 +91,11 @@ function iniciarSelectoresBusqueda(selCiudad, selBarrio) {
 
 }
 function cargarPropiedades(parametros) {
+    var divBusquedaOrden = "busqueda_resultado_orden";
+    var divBusquedaPropiedades = "busqueda_resultado_propiedades"
+    var divBusquedaNavegacion = "busqueda_resultado_navegacion"
+
+
     if (!parametros["pagina"]) {
         parametros["pagina"] = 1;
     }
@@ -106,9 +112,9 @@ function cargarPropiedades(parametros) {
         var lstNavegacion = $("<ul/>");
 
         $("#busqueda_resultado").empty();
-        $("#busqueda_resultado").append($("<div/>").append(lstOrden));
-        $("#busqueda_resultado").append($("<div/>").append(lstPropiedades));
-        $("#busqueda_resultado").append($("<div/>").append(lstNavegacion));
+        $("#busqueda_resultado").append($("<div id=" + divBusquedaOrden + "/>").append(lstOrden));
+        $("#busqueda_resultado").append($("<div id=" + divBusquedaPropiedades + "/>").append(lstPropiedades));
+        $("#busqueda_resultado").append($("<div id=" + divBusquedaNavegacion + "/>").append(lstNavegacion));
 
         //ordenamiento
         var ordenarMts2Asc = $("<label>").text("Orden ascendente mts2").prepend($('<input/>').attr({

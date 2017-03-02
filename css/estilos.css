@@ -138,8 +138,8 @@
     width: 700px;
 }
 
-#busqueda_resultado_orden {
-    display: inline-block;
+#busqueda_resultado_orden ul li {
+    list-style-type: none;   
 } 
 
 #busqueda{
