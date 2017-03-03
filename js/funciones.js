@@ -42,7 +42,7 @@ function generarItemCatalogo(p) {
 
     li.append($("<span />").text("Barrio: " + p.nombre_barrio));
     li.append($("<span />").text("Ciudad: " + p.nombre_ciudad));
-    li.append($("<p />").text("Descripción: " + p.texto));
+    li.append($("<p />").text("Descripción: " + p.texto.substring(0,150) + "..."));
 
     return li;
 }
@@ -112,7 +112,8 @@ function cargarPropiedades(parametros) {
         var lstNavegacion = $("<ul/>");
 
         $("#busqueda_resultado").empty();
-        $("#busqueda_resultado").append($("<div id=" + divBusquedaOrden + "/>").append(lstOrden));
+        var orden = 
+        $("#busqueda_resultado").append($("<div id=" + divBusquedaOrden + "/>").append($("<div><span>Ordenar Por:</span><div/>")).append(lstOrden));
         $("#busqueda_resultado").append($("<div id=" + divBusquedaPropiedades + "/>").append(lstPropiedades));
         $("#busqueda_resultado").append($("<div id=" + divBusquedaNavegacion + "/>").append(lstNavegacion));
 
@@ -163,7 +164,7 @@ function cargarPropiedades(parametros) {
 
             }
         }));
-
+        
         lstOrden.append($("<li>").append(ordenarMts2Asc));
         lstOrden.append($("<li>").append(ordenarMts2Desc));
         lstOrden.append($("<li>").append(ordenarPrecioAsc));
@@ -213,10 +214,10 @@ function cargarPropiedades(parametros) {
             parametros["pagina"] = datos.paginaUltima;
             cargarPropiedades(parametros);
         });
-        lstNavegacion.append(paginaPrimera);
-        lstNavegacion.append(paginaAnterior);
-        lstNavegacion.append(paginaNumero);
-        lstNavegacion.append(paginaSiguiente);
-        lstNavegacion.append(paginaUltima);
+        lstNavegacion.append($("<li>").append(paginaPrimera));
+        lstNavegacion.append($("<li>").append(paginaAnterior));
+        lstNavegacion.append($("<li>").append(paginaNumero));
+        lstNavegacion.append($("<li>").append(paginaSiguiente));
+        lstNavegacion.append($("<li>").append(paginaUltima));
     });
 }

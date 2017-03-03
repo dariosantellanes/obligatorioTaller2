@@ -4,7 +4,12 @@
     font-family: Verdana, Arial, sans-serif;
 }
 
+body{
+    overflow: auto;
+}
+
 #menu {
+    white-space: nowrap;
     background-color: #6E6E6E;
     height: 50px;
     border-bottom:1px solid #000;
@@ -57,12 +62,13 @@
 }
 
 .boton:hover{
-    background-color:#808080;    
+    background-color:#808080;  
+    outline: none;
 }
 
 .campo {
     display: inline-block;
-    width: 200px;
+    width: 90%;
     padding-bottom: 10px;
     padding-top: 10px;
     padding-left: 10px;
@@ -81,7 +87,7 @@
 
 .seleccion {
     display: inline-block;
-    width: 210px;
+    width: 100%;
     padding-bottom: 10px;
     padding-right: 20px;
     background-position: right top;
@@ -90,7 +96,7 @@
 }
 
 .seleccion select{
-    width: 180px;
+    width:90%;
 }
 
 .seleccion option {
@@ -112,8 +118,8 @@
 }
 
 #contenido {
-    overflow: hidden;
     margin: 50px 50px;
+    overflow: visible;
 }
 
 #ingreso{
@@ -129,19 +135,41 @@
     margin-top:20px;
 }
 
+#busqueda_pestania{
+    width: 1170px;
+}
+
+#busqueda{
+    float:left;
+}
+
 #busqueda_form td {
     vertical-align: top;
 }
 
 #busqueda_resultado {
     float: left;
-    width: 700px;
     margin-left: 50px;
+    width: 700px;
+}
+
+#busqueda_resultado_orden{
+    margin-bottom: 10px;
 }
 
 #busqueda_resultado_orden ul li {
     list-style-type: none;  
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float:left;
+    clear:both;
 } 
+
+#busqueda_resultado_propiedades {
+    width: inherit;
+    float:left;
+    clear:both;
+}
 
 #busqueda_resultado_propiedades ul li {
     margin-bottom: 10px;
@@ -163,9 +191,16 @@
     clear: left;
 } 
 
-#busqueda{
-    float:left;
-    width: auto;
+#busqueda_resultado_navegacion {
+    clear:both;
+    text-align: center;
+}
+
+#busqueda_resultado_navegacion ul li {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    list-style-type: none;
 }
 
 .cargando {
