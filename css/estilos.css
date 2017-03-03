@@ -112,7 +112,6 @@
 }
 
 #contenido {
-    overflow: hidden;
     margin: 50px 50px;
 }
 
@@ -128,19 +127,21 @@
 #ingreso div {
     margin-top:20px;
 }
+#busqueda_pestania{
+}
 
+#busqueda{
+    display: inline-block;
+    vertical-align: top;
+}
 
 #busqueda_form td {
     vertical-align: top;
 }
 
 #busqueda_resultado {
-    float: right;
-    width: 700px;
-}
-#busqueda{
-    float:left;
-    width: auto;
+    display: inline-block;
+    width: 600px;
 }
 
 #busqueda_resultado_orden{
@@ -162,7 +163,7 @@
 }
 
 #busqueda_resultado_propiedades ul li {
-    width: auto;
+    width: 100%;
     margin-bottom: 10px;
     list-style-type: none;
     float: left;

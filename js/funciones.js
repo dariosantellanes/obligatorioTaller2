@@ -42,7 +42,11 @@ function generarItemCatalogo(p) {
 
     li.append($("<span />").text("Barrio: " + p.nombre_barrio));
     li.append($("<span />").text("Ciudad: " + p.nombre_ciudad));
-    li.append($("<p />").text("Descripción: " + p.texto.substring(0,150) + "..."));
+    if (p.texto.length > 150) {
+        li.append($("<p />").text("Descripción: " + p.texto.substring(0, 150) + "..."));
+    } else {
+        li.append($("<p />").text("Descripción: " + p.texto));
+    }
 
     return li;
 }
@@ -112,13 +116,13 @@ function cargarPropiedades(parametros) {
         var lstNavegacion = $("<ul/>");
 
         $("#busqueda_resultado").empty();
-        var orden = 
-        $("#busqueda_resultado").append($("<div id=" + divBusquedaOrden + "/>").append($("<div><span>Ordenar Por:</span><div/>")).append(lstOrden));
+        var orden =
+                $("#busqueda_resultado").append($("<div id=" + divBusquedaOrden + "/>").append($("<div><span>Ordenar Por:</span><div/>")).append(lstOrden));
         $("#busqueda_resultado").append($("<div id=" + divBusquedaPropiedades + "/>").append(lstPropiedades));
         $("#busqueda_resultado").append($("<div id=" + divBusquedaNavegacion + "/>").append(lstNavegacion));
 
         //ordenamiento
-        var ordenarMts2Asc = $("<label>").text("Orden ascendente mts2").prepend($('<input/>').attr({
+        var ordenarMts2Asc = $("<label>").text("Ascendente mts2").prepend($('<input/>').attr({
             type: "radio",
             name: "orden",
             value: '1'
@@ -129,7 +133,7 @@ function cargarPropiedades(parametros) {
             }
         }));
 
-        var ordenarMts2Desc = $("<label>").text("Orden descendente mts2").prepend($('<input/>').attr({
+        var ordenarMts2Desc = $("<label>").text("Descendente mts2").prepend($('<input/>').attr({
             type: "radio",
             name: "orden",
             value: '2'
@@ -141,7 +145,7 @@ function cargarPropiedades(parametros) {
             }
         }));
 
-        var ordenarPrecioAsc = $("<label>").text("Orden ascendente precio").prepend($('<input/>').attr({
+        var ordenarPrecioAsc = $("<label>").text("Ascendente precio").prepend($('<input/>').attr({
             type: "radio",
             name: "orden",
             value: '3'
@@ -153,7 +157,7 @@ function cargarPropiedades(parametros) {
             }
         }));
 
-        var ordenarPrecioDesc = $("<label>").text("Orden descendente precio").prepend($('<input/>').attr({
+        var ordenarPrecioDesc = $("<label>").text("Descendente precio").prepend($('<input/>').attr({
             type: "radio",
             name: "orden",
             value: '4'
@@ -164,7 +168,7 @@ function cargarPropiedades(parametros) {
 
             }
         }));
-        
+
         lstOrden.append($("<li>").append(ordenarMts2Asc));
         lstOrden.append($("<li>").append(ordenarMts2Desc));
         lstOrden.append($("<li>").append(ordenarPrecioAsc));
