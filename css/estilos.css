@@ -1,15 +1,10 @@
 * {
-    margin: 0px auto;
+    margin: 0;
     padding: 0;
     font-family: Verdana, Arial, sans-serif;
 }
 
-body{
-    overflow: auto;
-}
-
 #menu {
-    white-space: nowrap;
     background-color: #6E6E6E;
     height: 50px;
     border-bottom:1px solid #000;
@@ -62,13 +57,12 @@ body{
 }
 
 .boton:hover{
-    background-color:#808080;  
-    outline: none;
+    background-color:#808080;    
 }
 
 .campo {
     display: inline-block;
-    width: 90%;
+    width: 200px;
     padding-bottom: 10px;
     padding-top: 10px;
     padding-left: 10px;
@@ -87,7 +81,7 @@ body{
 
 .seleccion {
     display: inline-block;
-    width: 100%;
+    width: 210px;
     padding-bottom: 10px;
     padding-right: 20px;
     background-position: right top;
@@ -96,7 +90,7 @@ body{
 }
 
 .seleccion select{
-    width:90%;
+    width: 180px;
 }
 
 .seleccion option {
@@ -118,8 +112,8 @@ body{
 }
 
 #contenido {
+    overflow: hidden;
     margin: 50px 50px;
-    overflow: visible;
 }
 
 #ingreso{
@@ -135,22 +129,18 @@ body{
     margin-top:20px;
 }
 
-#busqueda_pestania{
-    width: 1170px;
-}
-
-#busqueda{
-    float:left;
-}
 
 #busqueda_form td {
     vertical-align: top;
 }
 
 #busqueda_resultado {
-    float: left;
-    margin-left: 50px;
+    float: right;
     width: 700px;
+}
+#busqueda{
+    float:left;
+    width: auto;
 }
 
 #busqueda_resultado_orden{
@@ -172,6 +162,7 @@ body{
 }
 
 #busqueda_resultado_propiedades ul li {
+    width: auto;
     margin-bottom: 10px;
     list-style-type: none;
     float: left;
