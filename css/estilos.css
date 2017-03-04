@@ -115,6 +115,17 @@
     margin: 50px 50px;
 }
 
+#propiedades {
+    position: absolute;
+}
+#propiedades li {
+    position: relative;
+    margin: 0;
+    margin-top: 20px;
+    text-align: left
+}
+
+
 #ingreso{
     display:block;
     background: rgba(162, 156, 156, 0.67);
@@ -137,6 +148,7 @@
 
 #busqueda_form td {
     vertical-align: top;
+    width: 160px;
 }
 
 #busqueda_resultado {
@@ -171,14 +183,9 @@
     border: 1px solid black;
     list-style-position: inside;
     padding: 10px;
-} 
+}
 
-#busqueda_resultado_propiedades ul li span{
-    float: left;
-    clear: left;
-} 
-
-#busqueda_resultado_propiedades ul li p{
+#busqueda_resultado_propiedades ul li *{
     float: left;
     clear: left;
 } 
@@ -193,6 +200,21 @@
     margin-left: 5px;
     margin-right: 5px;
     list-style-type: none;
+}
+
+#estadistica{
+    display: inline-block;
+    vertical-align: top;
+}
+
+#estadistica_form td {
+    vertical-align: top;
+    width: 160px;
+}
+
+#estadistica_resultado {
+    display: inline-block;
+    width: 600px;
 }
 
 .cargando {

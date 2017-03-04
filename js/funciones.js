@@ -10,6 +10,12 @@ function inicializar() {
         $("#busqueda_pestania").show();
         $("#busqueda_resultado").empty();
     });
+
+    $("#estadistica_boton_mostrar").click(function () {
+        $(".oculto").hide();
+        $("#estadistica_pestania").show();
+        $("#estadistica_resultado").empty();
+    });
 }
 
 function vecSerAObjeto(vectorSerializado) {
@@ -24,7 +30,7 @@ function vecSerAObjeto(vectorSerializado) {
 function generarItemCatalogo(p) {
     var li = $("<li />");
 
-    li.append($("<h3 />").text(p.titulo));
+    li.append($("<a href=#></a>").text(p.titulo));
     if (p.operacion == "A") {
         li.append($("<span />").text("Precio: " + p.precio + "$"));
     } else {
@@ -61,39 +67,6 @@ function poblarSelector(datos, selector, defecto) {
     }
 }
 
-function iniciarSelectoresBusqueda(selCiudad, selBarrio) {
-    $.ajax({
-        type: "GET",
-        url: "busqueda.php",
-        dataType: 'json',
-        //timeout: 5000,
-        data: {accion: "poblarCiudades"}
-    }).done(function (datos) {
-        poblarSelector(datos, selCiudad, "----Ciudad----");
-    }).fail(function () {
-        poblarSelector(null, selCiudad, "----Ciudad----");
-        //mas cosas
-    }).always(function () {
-        selCiudad.change();
-    });
-
-    selCiudad.change(function () {
-        var ciudad = $(this).val();
-        $.ajax({
-            type: "GET",
-            url: "busqueda.php",
-            dataType: 'json',
-            //timeout: 5000,
-            data: {accion: "poblarBarrios", ciudad: ciudad}
-        }).done(function (datos) {
-            poblarSelector(datos, selBarrio, "----Barrio----");
-        }).fail(function () {
-            poblarSelector(null, selBarrio, "----Barrio----");
-            //mas cosas
-        });
-    });
-
-}
 function cargarPropiedades(parametros) {
     var divBusquedaOrden = "busqueda_resultado_orden";
     var divBusquedaPropiedades = "busqueda_resultado_propiedades"

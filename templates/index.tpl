@@ -20,7 +20,16 @@
         <div id="menu">
             <ul class="nivel-principal">
                 <li><button id="inicio_boton_mostrar" class="boton">Inicio</button></li>
-                <li><button id="busqueda_boton_mostrar" class="boton">Busqueda</button></li>
+                <li>
+                    <button id="propiedades_boton_mostrar" class="boton">Propiedades</button>
+                    <ul class="primer-nivel">
+                        <div id="propiedades">
+                            <li><button id="busqueda_boton_mostrar" class="boton">Busqueda</button></li>
+                            <li><button id="estadistica_boton_mostrar" class="boton">Estadistcas</button></li>
+                        </div>
+                    </ul>
+                </li>
+
 
                 {if {$estaLogueado==0}}
 
@@ -149,6 +158,42 @@
                 </div>
                 <div id="busqueda_resultado"></div>    
             </div>
+            <div id="estadistica_pestania" class="oculto clearfix" hidden>
+                <div id="estadistica">
+                    <form id="estadistica_form">
+                        <table>
+                            <tr>
+                                <td>Operacion(*):</td>
+                                <td> 
+                                    <div class="seleccion">
+                                        <div>
+                                            <input type="radio" value="A" name="operacion">Alquiler
+                                        </div>
+                                        <div>
+                                            <input type="radio" value="V" name="operacion">Venta
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ciudad(*):</td>
+                                <td>
+                                    <div class="seleccion">
+                                        <select name="ciudad"></select>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button type="submit">Buscar</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                    <div id="estadistica_form_msg" class="msg-error"><ul></ul></div>
+                </div>
+                <div id="estadistica_resultado"></div>    
+            </div>            
         </div>
 
     </body>

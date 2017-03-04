@@ -6,14 +6,52 @@ function iniciarValidacionFormularios() {
     var busquedaForm = $("#busqueda_form");
     var busquedaFormMsg = $("#busqueda_form_msg");
 
-    var selCiudad = busquedaForm.find('[name=ciudad]');
-    var selBarrio = busquedaForm.find('[name=barrio]');
+    var estadisticaForm = $("#estadistica_form");
+    var estadisticaFormMsg = $("#estadistica_form_msg");
 
-    iniciarSelectoresBusqueda(selCiudad, selBarrio);
 
-    $(ingresoForm).parent().append($(ingresoFormMsg));
+    var selBusquedaCiudad = busquedaForm.find('[name=ciudad]');
+    var selEstadisticaCiudad = estadisticaForm.find('[name=ciudad]');
 
-    $(ingresoForm).validate({
+    var selBusquedaBarrio = busquedaForm.find('[name=barrio]');
+
+    //codigo para poblar selectores
+    $.ajax({
+        type: "GET",
+        url: "busqueda.php",
+        dataType: 'json',
+        //timeout: 5000,
+        data: {accion: "poblarCiudades"}
+    }).done(function (datos) {
+        poblarSelector(datos, selBusquedaCiudad, "----Ciudad----");
+        poblarSelector(datos, selEstadisticaCiudad, "----Ciudad----");
+    }).fail(function () {
+        poblarSelector(null, selBusquedaCiudad, "----Ciudad----");
+        poblarSelector(null, selEstadisticaCiudad, "----Ciudad----");        //mas cosas
+    }).always(function () {
+        selEstadisticaCiudad.change();
+        selBusquedaCiudad.change();
+    });
+
+    selBusquedaCiudad.change(function () {
+        var ciudad = $(this).val();
+        $.ajax({
+            type: "GET",
+            url: "busqueda.php",
+            dataType: 'json',
+            //timeout: 5000,
+            data: {accion: "poblarBarrios", ciudad: ciudad}
+        }).done(function (datos) {
+            poblarSelector(datos, selBusquedaBarrio, "----Barrio----");
+        }).fail(function () {
+            poblarSelector(null, selBusquedaBarrio, "----Barrio----");
+            //mas cosas
+        });
+    });
+
+    ingresoForm.parent().append($(ingresoFormMsg));
+
+    ingresoForm.validate({
         focusInvalid: false,
         errorLabelContainer: ingresoFormMsg.find("ul"),
         errorElement: 'li',
@@ -165,4 +203,48 @@ function iniciarValidacionFormularios() {
             cargarPropiedades(vecSerAObjeto($(form).serializeArray()));
         }
     });
+    
+    estadisticaForm.validate({
+        focusInvalid: false,
+        errorLabelContainer: estadisticaFormMsg.find("ul"),
+        errorElement: 'li',
+        groups: {
+            busqueda: "operacion ciudad"
+        },
+        rules: {
+            operacion: {
+                required: true
+            },
+            ciudad: {
+                required: true,
+                min: 1
+            }
+        },
+        messages: {
+            operacion: {
+                required: "Seleccione una operacion."
+            },
+            ciudad: {
+                required: "Seleccione una ciudad",
+                min: "Seleccione una ciudad"
+            }
+        },
+        highlight: function (element) {
+            if ($(element).hasClass("campo")) {
+                $(element).addClass("campo-error");
+            } else {
+                $(element).closest(".seleccion").addClass("seleccion-error");
+            }
+        },
+        unhighlight: function (element) {
+            if ($(element).hasClass("campo")) {
+                $(element).removeClass("campo-error");
+            } else {
+                $(element).closest(".seleccion").removeClass("seleccion-error");
+            }
+        },
+        submitHandler: function (form) {
+            console.log(vecSerAObjeto($(form).serializeArray()));
+        }
+    });    
 }
