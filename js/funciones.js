@@ -1,7 +1,6 @@
 function inicializar() {
 
 
-    iniciarValidacionFormularios();
 
     $(".oculto").hide();
 
@@ -16,6 +15,9 @@ function inicializar() {
         $("#estadistica_pestania").show();
         $("#estadistica_resultado").empty();
     });
+
+    iniciarValidacionFormularios();
+
 }
 
 function vecSerAObjeto(vectorSerializado) {
@@ -25,7 +27,6 @@ function vecSerAObjeto(vectorSerializado) {
     }
     return objeto;
 }
-
 
 function generarItemCatalogo(p) {
     var li = $("<li />");
@@ -212,5 +213,5 @@ function cargarEstadisticas(parametros) {
         data: parametros
     }).done(function (datos) {
         console.log(datos);
-    });    
+    });
 }

@@ -48,7 +48,6 @@ function iniciarValidacionFormularios() {
         });
     });
 
-    ingresoForm.parent().append($(ingresoFormMsg));
 
     ingresoForm.validate({
         focusInvalid: false,

@@ -1,0 +1,81 @@
+body{
+    margin:0px;
+}
+#caja-imagenes{
+    display: table;
+}
+
+/*Estilo del div y de las imagenes*/
+#caja-imagenes{
+    margin:40px auto;
+    border: 1px solid #ccc;
+
+    visibility: visible;
+    overflow: hidden;
+    position: relative;
+    z-index: -1;
+    left: 0px;
+}
+
+.imagenesCasas {
+    height: auto;
+    width: 720px;
+}
+
+/*Estilo de las flehcas*/
+.next {
+    right: 402px;
+    margin-right: 10px;
+    background: url(../Iconos/slidebox_next.png) no-repeat left top;
+}
+
+.flechas:hover{
+    cursor:pointer;
+}
+
+.previous{
+    margin-left: 10px;
+    left:402px;
+    background: url(../Iconos/slidebox_previous.png) no-repeat left top;
+}
+
+
+.flechas{
+    position:absolute;
+    /*z-index:2;*/
+    display:block;
+    width:21px;
+    height:21px;
+    top:270px;
+}
+
+/*Estilo de los numeros*/
+.imagenesCasas {
+    height: auto;
+    width: 720px;
+}   
+
+#thumbs{
+    position: absolute;
+    z-index: 2;
+    bottom: 10px;
+    right: 10px;
+}
+
+#thumbs label{
+    display: block;
+    margin-left: 5px;
+    float: left;
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 2px 4px;
+    background: url(../Iconos/slidebox_thumb.png);
+    color: #fff;
+}
+
+#thumbs label:hover{
+    background: #fff;
+    color: #000;
+    cursor:pointer;
+}

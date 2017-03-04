@@ -53,6 +53,8 @@
                         </ul>
                     </li>
                 {else}
+                    <li><button id="mantenimiento_propiedades_boton">Mantenimiento de propiedades</button></li>
+                    <li><button id="responder_preguntas_boton">Responder pregunas</button></li>
                     <li>
                         <form action = "login.php" method = "post">
                             <input type = "hidden" name = "accion" value = "logout" />
@@ -61,6 +63,17 @@
                     </li>
                 {/if}
             </ul>
+        </div>
+
+        <div id="carrusel">
+            <div id="icono-next" class="next flechas" ></div>
+            <div id="icono-previous" class="previous flechas"></div>    
+            <div id="caja-imagenes">
+                <div id="thumbs">
+                    <!--Se cargan los numeros desde el javaScript con el metodo cargarNumeros(desdeCantidadNumeros,hastaCantidadNumero)-->
+                </div>
+                <img id="casa-1" class="imagenesCasas" src="img/ImagenesDeCasas/casa1.jpg" alt="Imágen de casa en venta">
+            </div>
         </div>
 
         <div id="contenido">
@@ -194,6 +207,9 @@
                 </div>
                 <div id="estadistica_resultado"></div>    
             </div>            
+            <div id="mantenimientoPropiedades">
+                {include file="mantenimientoPropiedades.tpl"}
+            </div>
         </div>
 
     </body>
