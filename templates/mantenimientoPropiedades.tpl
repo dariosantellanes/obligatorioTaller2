@@ -10,7 +10,7 @@
 </div>
 
 <div id="caja-opcionMantenimiento">
-    <div id="opcion-AgregarMantenimiento">
+    <div id="opcion-AgregarMantenimiento" class="oculto">
 
         <table id="datos-extas">
 

@@ -1,5 +1,8 @@
 function inicializar() {
 
+    inicioCarrusel();
+    iniciarValidacionFormularios();
+
     $(".oculto").hide();
 
     $("#busqueda_boton_mostrar").click(function () {
@@ -74,9 +77,6 @@ function inicializar() {
         }
 
     });
-
-    inicioCarrusel();
-    iniciarValidacionFormularios();
 
 }
 
@@ -322,4 +322,14 @@ function todosLosCamposCorrectos() {
     }
 
     return false;
+}
+
+//Retorna true si el campo no es vacio
+function validaCampoVacio(campo) {
+    
+    if(campo.trim().length==0){
+        return false;
+    }
+    
+    return true;
 }

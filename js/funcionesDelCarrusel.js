@@ -10,7 +10,6 @@ function inicioCarrusel() {
     $(".numerosImagenesCarrusel").click(hiceClickEnNumero);
     cargarNumeros(1, 4);
     pintarDespintarNumeros(1, "pintar");
-
     //setInterval(cambia, 3000);
 }
 
