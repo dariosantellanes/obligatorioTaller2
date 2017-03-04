@@ -206,11 +206,11 @@ function cargarEstadisticas(parametros) {
     }
     $.ajax({
         type: "GET",
-        url: "busqueda.php",
+        url: "estadistica.php",
         dataType: 'json',
         //timeout: 5000,
         data: parametros
     }).done(function (datos) {
-        
+        console.log(datos);
     });    
 }

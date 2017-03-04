@@ -9,11 +9,10 @@ function iniciarValidacionFormularios() {
     var estadisticaForm = $("#estadistica_form");
     var estadisticaFormMsg = $("#estadistica_form_msg");
 
+    var selBusquedaCiudad = busquedaForm.find(':input[name=ciudad]');
+    var selEstadisticaCiudad = estadisticaForm.find(':input[name=ciudad]');
 
-    var selBusquedaCiudad = busquedaForm.find('[name=ciudad]');
-    var selEstadisticaCiudad = estadisticaForm.find('[name=ciudad]');
-
-    var selBusquedaBarrio = busquedaForm.find('[name=barrio]');
+    var selBusquedaBarrio = busquedaForm.find(':input[name=barrio]');
 
     //codigo para poblar selectores
     $.ajax({
@@ -108,6 +107,7 @@ function iniciarValidacionFormularios() {
                     "clave": "Ocurrio un error, intente mas tarde."
                 });
             }).always(function () {
+                //hacer
             });
         }
     });
@@ -155,7 +155,6 @@ function iniciarValidacionFormularios() {
                         return parseInt(busquedaForm.find(':input[name=precioDesde]').val());
                     }
                 }
-
             },
             garage: {
                 required: false
