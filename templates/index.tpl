@@ -6,6 +6,7 @@
         <meta charset="UTF-8">
         <title>Altavista Inmobiliaria</title>
         <link rel="stylesheet" href="css/estilos.css" type="text/css"/>
+        <link rel="stylesheet" href="css/estilosDelCarrusel.css" type="text/css"/>
         <script type="text/javascript" src="js/funciones.js"></script>
         <script type="text/javascript" src="js/validaciones.js"></script>
         <script type="text/javascript" src="js/jquery-3.1.1.js"></script>

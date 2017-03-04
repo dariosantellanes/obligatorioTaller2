@@ -3,6 +3,9 @@ function inicializar() {
     inicioCarrusel();
     iniciarValidacionFormularios();
 
+    cargarSelectHabitacionesBaños("cantidad-habitaciones");
+    cargarSelectHabitacionesBaños("cantidad-baños");
+
     $(".oculto").hide();
 
     $("#busqueda_boton_mostrar").click(function () {
@@ -326,10 +329,10 @@ function todosLosCamposCorrectos() {
 
 //Retorna true si el campo no es vacio
 function validaCampoVacio(campo) {
-    
-    if(campo.trim().length==0){
+
+    if (campo.trim().length == 0) {
         return false;
     }
-    
+
     return true;
 }
