@@ -1,61 +1,44 @@
-
-#caja-imagenes{
-    display: table;
+#carrusel{
+    white-space: nowrap;
+    margin:0 auto;
+    text-align: center;
 }
 
-/*Estilo del div y de las imagenes*/
-#caja-imagenes{
-    margin:40px auto;
-    border: 1px solid #ccc;
-
-    visibility: visible;
-    overflow: hidden;
-    position: relative;
-    z-index: -1;
-    left: 0px;
-}
-
-.imagenesCasas {
-    height: auto;
-    width: 720px;
-}
-
-/*Estilo de las flehcas*/
-.next {
-    right: 402px;
-    margin-right: 10px;
-    background: url(../Iconos/slidebox_next.png) no-repeat left top;
+.flechas{
+    display: inline-block;
+    width:30px;
+    height:30px;
 }
 
 .flechas:hover{
     cursor:pointer;
 }
 
-.previous{
-    margin-left: 10px;
-    left:402px;
-    background: url(../Iconos/slidebox_previous.png) no-repeat left top;
+#caja-imagenes{
+    display: inline-block;
+    width: 700px;
+    position: relative;
 }
 
-
-.flechas{
-    position:absolute;
-    /*z-index:2;*/
-    display:block;
-    width:21px;
-    height:21px;
-    top:270px;
-}
-
-/*Estilo de los numeros*/
 .imagenesCasas {
     height: auto;
-    width: 720px;
-}   
+    width: 100%;
+}
+
+.next {
+    background: url(../Iconos/slidebox_next.png) no-repeat;
+    background-size: cover;
+
+}
+
+.previous{
+    background: url(../Iconos/slidebox_previous.png) no-repeat;
+    background-size: cover;
+
+}
 
 #thumbs{
     position: absolute;
-    z-index: 2;
     bottom: 10px;
     right: 10px;
 }
