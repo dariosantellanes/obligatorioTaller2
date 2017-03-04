@@ -7,6 +7,13 @@ function inicializar() {
     cargarSelectHabitacionesBaños("cantidad-baños");
 
     $(".oculto").hide();
+    $("#inicio_pestania").show();
+
+
+    $("#inicio_boton_mostrar").click(function () {
+        $(".oculto").hide();
+        $("#inicio_pestania").show();
+    });
 
     $("#busqueda_boton_mostrar").click(function () {
         $(".oculto").hide();

@@ -67,18 +67,8 @@
             </ul>
         </div>
 
-        <div id="carrusel">
-            <div id="icono-next" class="next flechas" ></div>
-            <div id="icono-previous" class="previous flechas"></div>    
-            <div id="caja-imagenes">
-                <div id="thumbs">
-                    <!--Se cargan los numeros desde el javaScript con el metodo cargarNumeros(desdeCantidadNumeros,hastaCantidadNumero)-->
-                </div>
-                <img id="casa-1" class="imagenesCasas" src="img/ImagenesDeCasas/casa1.jpg" alt="Imágen de casa en venta">
-            </div>
-        </div>
-
         <div id="contenido">
+            {include file="inicioPestania.tpl"}
             {include file="busquedaPestania.tpl"}
             {include file="estadisticaPestania.tpl"}
             {include file="mantenimientoPestania.tpl"}
