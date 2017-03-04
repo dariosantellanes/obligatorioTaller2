@@ -1,7 +1,5 @@
 function inicializar() {
 
-
-
     $(".oculto").hide();
 
     $("#busqueda_boton_mostrar").click(function () {
@@ -16,6 +14,68 @@ function inicializar() {
         $("#estadistica_resultado").empty();
     });
 
+    //codigo daniel
+
+    $("#mantenimiento_propiedades_boton").click(function () {
+        $("#mantenimientoPropiedades").show();
+
+        $.ajax({
+            type: "POST",
+            url: "mantenimientoPropiedades.php",
+            dataType: 'json',
+            data: {accion: "mantenimiento-propiedades", ciudadSeleccionada: "1"}
+        }).done(function (datos) {
+
+            cargarSelectCiudad(datos.ciudades);
+            cargarSelectBarrios(datos.barrios);
+        });
+    });
+
+    $("#btnAgregarPropiedad").click(function () {
+        $("#opcion-AgregarMantenimiento").show();
+    });
+
+    $("#ciudad").change(function () {
+        $.ajax({
+            type: "POST",
+            url: "mantenimientoPropiedades.php",
+            dataType: 'json',
+            data: {accion: "cambio-ciudad", ciudadSeleccionada: this.value}
+        }).done(function (datos) {
+
+            cargarSelectBarrios(datos.nuevosBarrios);
+        });
+    });
+
+    $("#btnAceptarMantenimiento").click(function () {
+        todosLosCamposCorrectos();
+        if (todosLosCamposCorrectos()) {
+            $.ajax({
+                type: "POST",
+                url: "mantenimientoPropiedades.php",
+                dataType: 'json',
+                data: {accion: "aceptar",
+                    tipoPropiedad: $("#tipo-propiedad").val().charAt(0),
+                    operacion: $("#operacion").val().charAt(0),
+                    ciudad: $("#ciudad").val(),
+                    barrio: $("#barrio").val(),
+                    precio: $("#precio").val(),
+                    metrosCuadrados: $("#metros-cuadrados").val(),
+                    cantidadHabitaciones: $("#cantidad-habitaciones").val(),
+                    cantidadBaños: $("#cantidad-baños").val(),
+                    garage: $("#garage").val()
+                }
+            }).done(function (datos) {
+
+
+            });
+        } else {
+            alert("Incorrecto");
+        }
+
+    });
+
+    inicioCarrusel();
     iniciarValidacionFormularios();
 
 }
@@ -214,4 +274,52 @@ function cargarEstadisticas(parametros) {
     }).done(function (datos) {
         console.log(datos);
     });
+}
+
+function cargarSelectCiudad(listaCiudades) {
+    $("#ciudad").empty();
+    for (i in listaCiudades) {
+        var ciudad = listaCiudades[i];
+        var opcion = $("<option />");
+        opcion.attr("value", ciudad["id"]);
+        opcion.text(ciudad["nombre"]);
+
+        $("#ciudad").append(opcion);
+
+    }
+}
+
+function cargarSelectBarrios(listaBarrios) {
+    $("#barrio").empty();
+    for (i in listaBarrios) {
+        var barrio = listaBarrios[i];
+        var opcion = $("<option />");
+        opcion.attr("value", barrio["id"]);
+        opcion.text(barrio["nombre"]);
+
+        $("#barrio").append(opcion);
+
+    }
+}
+
+function cargarSelectHabitacionesBaños(idSelectAcargar) {
+    for (var i = 1; i <= 100; i++) {
+        var opcion = $("<option />");
+        opcion.attr("value", i);
+        opcion.text(i);
+        $("#" + idSelectAcargar).append(opcion);
+    }
+}
+
+function todosLosCamposCorrectos() {
+    var valorPrecio = $("#precio").val();
+    var valorMetrosCuadrados = $("#metros-cuadrados").val();
+
+    if (validaCampoVacio(valorPrecio) && validaCampoVacio(valorMetrosCuadrados)) {
+        if (!isNaN(valorPrecio) && !isNaN(valorMetrosCuadrados)) {
+            return true;
+        }
+    }
+
+    return false;
 }

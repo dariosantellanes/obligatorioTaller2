@@ -11,6 +11,7 @@
         <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
         <script type="text/javascript" src="js/jquery.validate.min"></script>
         <script type="text/javascript" src="js/additional-methods.min"></script>
+        <script type="text/javascript" src="js/funcionesDelCarrusel.js"></script>
         <script type = "text/javascript" >
             $(document).ready(inicializar);
         </script> 
@@ -53,8 +54,8 @@
                         </ul>
                     </li>
                 {else}
-                    <li><button id="mantenimiento_propiedades_boton">Mantenimiento de propiedades</button></li>
-                    <li><button id="responder_preguntas_boton">Responder pregunas</button></li>
+                    <li><button id="mantenimiento_propiedades_boton" class="boton">Mantenimiento de propiedades</button></li>
+                    <li><button id="responder_preguntas_boton" class="boton">Responder pregunas</button></li>
                     <li>
                         <form action = "login.php" method = "post">
                             <input type = "hidden" name = "accion" value = "logout" />
@@ -207,7 +208,7 @@
                 </div>
                 <div id="estadistica_resultado"></div>    
             </div>            
-            <div id="mantenimientoPropiedades">
+            <div id="mantenimientoPropiedades" class="oculto" hidden>
                 {include file="mantenimientoPropiedades.tpl"}
             </div>
         </div>
