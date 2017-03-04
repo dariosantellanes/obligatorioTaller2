@@ -2,7 +2,7 @@ function inicializar() {
 
     inicioCarrusel();
     iniciarValidacionFormularios();
-
+    
     cargarSelectHabitacionesBaños("cantidad-habitaciones");
     cargarSelectHabitacionesBaños("cantidad-baños");
 
@@ -85,9 +85,7 @@ function inicializar() {
         } else {
             alert("Incorrecto");
         }
-
     });
-
 }
 
 function vecSerAObjeto(vectorSerializado) {
@@ -126,16 +124,6 @@ function generarItemCatalogo(p) {
     }
 
     return li;
-}
-
-function poblarSelector(datos, selector, defecto) {
-    selector.empty();
-    selector.append($("<option />").val("").text(defecto));
-    if (datos != null) {
-        for (i = 0; i < datos.length; i++) {
-            selector.append($("<option />").val(datos[i].value).text(datos[i].text));
-        }
-    }
 }
 
 function cargarPropiedades(parametros) {
@@ -286,31 +274,6 @@ function cargarEstadisticas(parametros) {
     });
 }
 
-function cargarSelectCiudad(listaCiudades) {
-    $("#ciudad").empty();
-    for (i in listaCiudades) {
-        var ciudad = listaCiudades[i];
-        var opcion = $("<option />");
-        opcion.attr("value", ciudad["id"]);
-        opcion.text(ciudad["nombre"]);
-
-        $("#ciudad").append(opcion);
-
-    }
-}
-
-function cargarSelectBarrios(listaBarrios) {
-    $("#barrio").empty();
-    for (i in listaBarrios) {
-        var barrio = listaBarrios[i];
-        var opcion = $("<option />");
-        opcion.attr("value", barrio["id"]);
-        opcion.text(barrio["nombre"]);
-
-        $("#barrio").append(opcion);
-
-    }
-}
 
 function cargarSelectHabitacionesBaños(idSelectAcargar) {
     for (var i = 1; i <= 100; i++) {
@@ -342,4 +305,18 @@ function validaCampoVacio(campo) {
     }
 
     return true;
+}
+
+function cargarSelectores(){
+    
+}
+
+function poblarSelector(datos, selector, defecto) {
+    selector.empty();
+    selector.append($("<option />").val("").text(defecto));
+    if (datos != null) {
+        for (i = 0; i < datos.length; i++) {
+            selector.append($("<option />").val(datos[i].value).text(datos[i].text));
+        }
+    }
 }

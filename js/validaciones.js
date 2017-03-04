@@ -1,5 +1,7 @@
 function iniciarValidacionFormularios() {
 
+    cargarSelectores();
+
     var ingresoForm = $("#ingreso_form");
     var ingresoFormMsg = $("#ingreso_form_msg");
 
@@ -201,7 +203,7 @@ function iniciarValidacionFormularios() {
             cargarPropiedades(vecSerAObjeto($(form).serializeArray()));
         }
     });
-    
+
     estadisticaForm.validate({
         focusInvalid: false,
         errorLabelContainer: estadisticaFormMsg.find("ul"),
@@ -244,5 +246,5 @@ function iniciarValidacionFormularios() {
         submitHandler: function (form) {
             cargarEstadisticas(vecSerAObjeto($(form).serializeArray()));
         }
-    });    
+    });
 }
