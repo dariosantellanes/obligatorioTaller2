@@ -89,8 +89,7 @@ function cargarPropiedades(parametros) {
         var lstNavegacion = $("<ul/>");
 
         $("#busqueda_resultado").empty();
-        var orden =
-                $("#busqueda_resultado").append($("<div id=" + divBusquedaOrden + "/>").append($("<div><span>Ordenar Por:</span><div/>")).append(lstOrden));
+        $("#busqueda_resultado").append($("<div id=" + divBusquedaOrden + "/>").append($("<div><span>Ordenar Por:</span><div/>")).append(lstOrden));
         $("#busqueda_resultado").append($("<div id=" + divBusquedaPropiedades + "/>").append(lstPropiedades));
         $("#busqueda_resultado").append($("<div id=" + divBusquedaNavegacion + "/>").append(lstNavegacion));
 
@@ -196,5 +195,22 @@ function cargarPropiedades(parametros) {
         lstNavegacion.append($("<li>").append(paginaNumero));
         lstNavegacion.append($("<li>").append(paginaSiguiente));
         lstNavegacion.append($("<li>").append(paginaUltima));
+    }).fail({
+        //hacer
     });
+}
+
+function cargarEstadisticas(parametros) {
+    if (!parametros["accion"]) {
+        parametros["accion"] = "estadistica";
+    }
+    $.ajax({
+        type: "GET",
+        url: "busqueda.php",
+        dataType: 'json',
+        //timeout: 5000,
+        data: parametros
+    }).done(function (datos) {
+        
+    });    
 }

@@ -6,36 +6,8 @@ include_once("config_BD.php");
 
 $cantidadElementosPorPagina = 10;
 
-
-$accion = strlen($_GET["accion"]) ? $_GET["accion"] : $accion;
 $pagina = strlen($_GET["pagina"]) ? $_GET["pagina"] : 1;
-
-$orden =  strlen($_GET["orden"]) ? $_GET["orden"] : 0;
-
-if (strlen($accion)) {
-    if ($accion == poblarCiudades) {
-        $conn->conectar();
-        $sql = "SELECT ciudades.id AS value, ciudades.nombre AS text FROM ciudades ORDER BY ciudades.nombre";
-        $conn->consulta($sql);
-        $result = $conn->restantesRegistros();
-        $conn->desconectar();
-        echo json_encode($result);
-        exit();
-    }
-    if ($accion == poblarBarrios) {
-        $conn->conectar();
-        $sql = "SELECT barrios.id AS value, barrios.nombre AS text FROM barrios WHERE barrios.ciudad_id = :ciudad ORDER BY barrios.nombre";
-
-        $parametros = array(
-            array("ciudad", $_GET["ciudad"]),
-        );
-        $conn->consulta($sql, $parametros);
-        $result = $conn->restantesRegistros();
-        $conn->desconectar();
-        echo json_encode($result);
-        exit();
-    }
-}
+$orden = strlen($_GET["orden"]) ? $_GET["orden"] : 0;
 
 if (strlen($pagina)) {
 

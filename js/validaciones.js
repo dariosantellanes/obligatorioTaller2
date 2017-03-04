@@ -18,7 +18,7 @@ function iniciarValidacionFormularios() {
     //codigo para poblar selectores
     $.ajax({
         type: "GET",
-        url: "busqueda.php",
+        url: "utilidad.php",
         dataType: 'json',
         //timeout: 5000,
         data: {accion: "poblarCiudades"}
@@ -37,7 +37,7 @@ function iniciarValidacionFormularios() {
         var ciudad = $(this).val();
         $.ajax({
             type: "GET",
-            url: "busqueda.php",
+            url: "utilidad.php",
             dataType: 'json',
             //timeout: 5000,
             data: {accion: "poblarBarrios", ciudad: ciudad}
@@ -244,7 +244,7 @@ function iniciarValidacionFormularios() {
             }
         },
         submitHandler: function (form) {
-            console.log(vecSerAObjeto($(form).serializeArray()));
+            cargarEstadisticas(vecSerAObjeto($(form).serializeArray()));
         }
     });    
 }
