@@ -1,4 +1,5 @@
 #carrusel{
+    overflow: auto;
     white-space: nowrap;
     margin:0 auto;
     text-align: center;
@@ -16,7 +17,7 @@
 
 #caja-imagenes{
     display: inline-block;
-    width: 700px;
+    width: 50%;
     position: relative;
 }
 
