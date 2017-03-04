@@ -22,7 +22,7 @@ function inicializar() {
 
     //codigo daniel
 
-    $("#mantenimiento_propiedades_boton").click(function () {
+    $("#mantenimiento_boton_mostrar").click(function () {
         $(".oculto").hide();
         $("#mantenimientoPropiedades").show();
 

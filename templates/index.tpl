@@ -55,8 +55,8 @@
                         </ul>
                     </li>
                 {else}
-                    <li><button id="mantenimiento_propiedades_boton" class="boton">Mantenimiento de propiedades</button></li>
-                    <li><button id="responder_preguntas_boton" class="boton">Responder pregunas</button></li>
+                    <li><button id="mantenimiento_boton_mostrar" class="boton">Mantenimiento de propiedades</button></li>
+                    <li><button id="responder_preguntas_boton_mostrar" class="boton">Responder pregunas</button></li>
                     <li>
                         <form action = "login.php" method = "post">
                             <input type = "hidden" name = "accion" value = "logout" />
