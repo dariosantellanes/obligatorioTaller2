@@ -79,7 +79,7 @@ function agarrarIdImagenActual() {
 }
 
 function cambiarImagenId(idCasaVieja, idNuevaCasa) {
-    $("#casa-" + idCasaVieja).attr("src", "ImagenesDeCasas/casa" + idNuevaCasa + ".jpg");
+    $("#casa-" + idCasaVieja).attr("src", "img/ImagenesDeCasas/casa" + idNuevaCasa + ".jpg");
     $("#casa-" + idCasaVieja).attr("id", "casa-" + idNuevaCasa);
 }
 

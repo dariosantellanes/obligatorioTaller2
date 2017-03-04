@@ -23,6 +23,7 @@ function inicializar() {
     //codigo daniel
 
     $("#mantenimiento_propiedades_boton").click(function () {
+        $(".oculto").hide();
         $("#mantenimientoPropiedades").show();
 
         $.ajax({
@@ -31,7 +32,6 @@ function inicializar() {
             dataType: 'json',
             data: {accion: "mantenimiento-propiedades", ciudadSeleccionada: "1"}
         }).done(function (datos) {
-
             cargarSelectCiudad(datos.ciudades);
             cargarSelectBarrios(datos.barrios);
         });
