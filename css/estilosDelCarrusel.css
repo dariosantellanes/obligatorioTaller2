@@ -1,14 +1,25 @@
 #carrusel{
-    overflow: auto;
-    white-space: nowrap;
-    margin:0 auto;
+    overflow: visible;
     text-align: center;
+    height: 1px;
+}
+
+
+#carrusel:after,
+.flechas, .imagenesCasas {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#carrusel:after {
+    content: '';
+    height: 100%;
 }
 
 .flechas{
-    display: inline-block;
-    width:30px;
-    height:30px;
+    width: 30px;
+    height: 30px;
+        
 }
 
 .flechas:hover{
@@ -19,6 +30,7 @@
     display: inline-block;
     width: 50%;
     position: relative;
+    z-index: -1;
 }
 
 .imagenesCasas {
