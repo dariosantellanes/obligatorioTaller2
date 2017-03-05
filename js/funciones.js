@@ -125,7 +125,9 @@ function cargarPropiedadesBusqueda(parametros) {
         var divNavegacion = $("<div/>").attr({
             id: divContenedor.attr('id') + "_navegacion"
         });
-
+        
+        $(divOrden).append($("<span>Ordenar Por:</span>"));
+        
         $(divOrden).append(generarOrdenamiento(datos.orden, parametros, cargarPropiedadesBusqueda));
         $(divPropiedades).append(generarCatalogoBusqueda(datos.propiedades));
         $(divNavegacion).append(generarNavegacion(datos.navegacion, parametros, cargarPropiedadesBusqueda));
