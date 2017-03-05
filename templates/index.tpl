@@ -6,12 +6,15 @@
         <meta charset="UTF-8">
         <title>Altavista Inmobiliaria</title>
         <link rel="stylesheet" href="css/estilos.css" type="text/css"/>
-        <link rel="stylesheet" href="css/estilosDelCarrusel.css" type="text/css"/>
+        <link rel="stylesheet" href="css/estilosCarrusel.css" type="text/css"/>
         <link rel="stylesheet" href="css/estilosMantenimientoPropiedades.css" type="text/css"/>
+        <link rel="stylesheet" href="css/estilosBusqueda.css" type="text/css"/>
+        <link rel="stylesheet" href="css/estilosEstadisticas.css" type="text/css"/>
+
         
         <script type="text/javascript" src="js/funciones.js"></script>
         <script type="text/javascript" src="js/validaciones.js"></script>
-        <script type="text/javascript" src="js/funcionesDelCarrusel.js"></script>
+        <script type="text/javascript" src="js/funcionesCarrusel.js"></script>
         
         <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
         <script type="text/javascript" src="js/jquery.validate.min"></script>

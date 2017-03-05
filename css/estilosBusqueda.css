@@ -1,0 +1,63 @@
+#busqueda_pestania{
+}
+
+#busqueda{
+    display: inline-block;
+    vertical-align: top;
+}
+
+#busqueda_form td {
+    vertical-align: top;
+    width: 160px;
+}
+
+#busqueda_resultado {
+    display: inline-block;
+    width: 600px;
+}
+
+#busqueda_resultado_orden{
+    margin-bottom: 10px;
+}
+
+#busqueda_resultado_orden ul li {
+    list-style-type: none;  
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float:left;
+    clear:both;
+} 
+
+#busqueda_resultado_propiedades {
+    width: inherit;
+    float:left;
+    clear:both;
+}
+
+#busqueda_resultado_propiedades ul li {
+    width: 100%;
+    margin-bottom: 10px;
+    list-style-type: none;
+    float: left;
+    clear: both;
+    border: 1px solid black;
+    list-style-position: inside;
+    padding: 10px;
+}
+
+#busqueda_resultado_propiedades ul li *{
+    float: left;
+    clear: left;
+} 
+
+#busqueda_resultado_navegacion {
+    clear:both;
+    text-align: center;
+}
+
+#busqueda_resultado_navegacion ul li {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    list-style-type: none;
+}

@@ -99,18 +99,23 @@ if (strlen($pagina)) {
     array_push($parametros, array("offset", ($pagina - 1) * $cantidadElementosPorPagina, "int"));
     array_push($parametros, array("cantidad", $cantidadElementosPorPagina, "int"));
 
-    $pepe = $columnas . $sql . $limite;
-    $conn->consulta($pepe, $parametros);
+    $envio = $columnas . $sql . $limite;
+    $conn->consulta($envio, $parametros);
 
 
     $result = $conn->restantesRegistros();
-    $datos = array("propiedades" => $result
-        , "paginaActual" => $pagina
-        , "paginaUltima" => $paginaUltima
-        , "paginaSiguiente" => $paginaSiguiente
-        , "paginaAnterior" => $paginaAnterior
-        , "orden" => $orden
-    );
+    $datos = array(
+                "propiedades" => $result,
+                "navegacion" =>
+                array(
+                    "paginaPrimera" => 1,
+                    "paginaAnterior" => $paginaAnterior,
+                    "paginaActual" => $pagina,
+                    "paginaSiguiente" => $paginaSiguiente,
+                    "paginaUltima" => $paginaUltima
+                ),
+                "orden" => $orden
+            );
 
     $conn->desconectar();
     echo json_encode($datos);

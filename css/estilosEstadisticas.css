@@ -1,0 +1,10 @@
+
+#estadistica_form td {
+    vertical-align: top;
+    width: 160px;
+}
+
+#estadistica_resultado {
+    display: inline-block;
+    width: 600px;
+}

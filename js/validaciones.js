@@ -1,7 +1,5 @@
 function iniciarValidacionFormularios() {
 
-    cargarSelectores();
-
     var ingresoForm = $("#ingreso_form");
     var ingresoFormMsg = $("#ingreso_form_msg");
 
@@ -200,7 +198,7 @@ function iniciarValidacionFormularios() {
             }
         },
         submitHandler: function (form) {
-            cargarPropiedades(vecSerAObjeto($(form).serializeArray()));
+            cargarPropiedadesBusqueda(vecSerAObjeto($(form).serializeArray()));
         }
     });
 
