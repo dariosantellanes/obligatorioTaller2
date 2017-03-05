@@ -4,9 +4,8 @@
     font-family: Verdana, Arial, sans-serif;
 }
 body {
-    width: inherit;
-    height: inherit;
-
+    display: inline-block;
+    min-width: 100%;
 }
 
 #menu {
@@ -17,7 +16,7 @@ body {
     border-bottom:1px solid #000;
     border-radius: 0px 0px 4px 4px;
     box-shadow: 0 15px 18px -8px #000;
-    min-width: 100%;
+    width: 100%;
 }
 
 .nivel-principal{
