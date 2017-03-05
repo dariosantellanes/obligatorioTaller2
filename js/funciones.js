@@ -45,7 +45,7 @@ function inicializar() {
     });
 
     $("#btnAgregarPropiedad").click(function () {
-        $("#opcion-AgregarMantenimiento").show();
+        $("#opcion-AgregarPropiedad").show();
     });
 
     $("#ciudad").change(function () {
@@ -86,6 +86,11 @@ function inicializar() {
             alert("Incorrecto");
         }
     });
+    
+    $("#btnEditarPropiedad").click(function () {
+        $("#opcion-EditarPropiedad").show();
+        cargarPropiedadesEditar({});
+    });
 }
 
 function vecSerAObjeto(vectorSerializado) {
@@ -96,32 +101,36 @@ function vecSerAObjeto(vectorSerializado) {
     return objeto;
 }
 
-function generarItemCatalogo(p) {
+function generarItemCatalogo(p,restoInformacion) {
     var li = $("<li />");
 
     li.append($("<a href=#></a>").text(p.titulo));
-    if (p.operacion == "A") {
-        li.append($("<span />").text("Precio: " + p.precio + "$"));
-    } else {
-        li.append($("<span />").text("Precio: " + p.precio + "U$D"));
-    }
-    li.append($("<span />").text("Banios: " + p.banios));
-    li.append($("<span />").text("Metros Cuadrados: " + p.mts2));
-    li.append($("<span />").text("Habitaciones: " + p.habitaciones));
-    if (p.garage == 1) {
-        li.append($("<span />").text("Garage: Si"));
-    } else {
-        li.append($("<span />").text("Garage: No"));
+    
+    if (restoInformacion) {
+        if (p.operacion == "A") {
+            li.append($("<span />").text("Precio: " + p.precio + "$"));
+        } else {
+            li.append($("<span />").text("Precio: " + p.precio + "U$D"));
+        }
+        li.append($("<span />").text("Banios: " + p.banios));
+        li.append($("<span />").text("Metros Cuadrados: " + p.mts2));
+        li.append($("<span />").text("Habitaciones: " + p.habitaciones));
+        if (p.garage == 1) {
+            li.append($("<span />").text("Garage: Si"));
+        } else {
+            li.append($("<span />").text("Garage: No"));
 
+        }
+
+        li.append($("<span />").text("Barrio: " + p.nombre_barrio));
+        li.append($("<span />").text("Ciudad: " + p.nombre_ciudad));
+        if (p.texto.length > 150) {
+            li.append($("<p />").text("Descripción: " + p.texto.substring(0, 150) + "..."));
+        } else {
+            li.append($("<p />").text("Descripción: " + p.texto));
+        }
     }
 
-    li.append($("<span />").text("Barrio: " + p.nombre_barrio));
-    li.append($("<span />").text("Ciudad: " + p.nombre_ciudad));
-    if (p.texto.length > 150) {
-        li.append($("<p />").text("Descripción: " + p.texto.substring(0, 150) + "..."));
-    } else {
-        li.append($("<p />").text("Descripción: " + p.texto));
-    }
 
     return li;
 }
@@ -311,6 +320,31 @@ function cargarSelectores(){
     
 }
 
+function cargarSelectCiudad(listaCiudades) {
+    $("#ciudad").empty();
+    for (i in listaCiudades) {
+        var ciudad = listaCiudades[i];
+        var opcion = $("<option />");
+        opcion.attr("value", ciudad["id"]);
+        opcion.text(ciudad["nombre"]);
+
+        $("#ciudad").append(opcion);
+
+    }
+}
+
+function cargarSelectBarrios(listaBarrios) {
+    $("#barrio").empty();
+    for (i in listaBarrios) {
+        var barrio = listaBarrios[i];
+        var opcion = $("<option />");
+        opcion.attr("value", barrio["id"]);
+        opcion.text(barrio["nombre"]);
+
+        $("#barrio").append(opcion);
+
+    }
+}
 function poblarSelector(datos, selector, defecto) {
     selector.empty();
     selector.append($("<option />").val("").text(defecto));
@@ -319,4 +353,77 @@ function poblarSelector(datos, selector, defecto) {
             selector.append($("<option />").val(datos[i].value).text(datos[i].text));
         }
     }
+}
+
+function cargarPropiedadesEditar(parametros) {
+    var divEditarPropiedades = "editar_resultado_propiedades"
+    var divEditarNavegacion = "editar_resultado_navegacion"
+
+    
+    if (!parametros["pagina"]) {
+        parametros["pagina"] = 1;
+    }
+    $.ajax({
+        type: "GET",
+        url: "busqueda.php",
+        dataType: 'json',
+        //timeout: 5000,
+        data: parametros
+    }).done(function (datos) {
+
+        var lstPropiedades = $("<ul/>");
+        var lstNavegacion = $("<ul/>");
+
+        $("#opcion-EditarPropiedad").empty();
+        $("#opcion-EditarPropiedad").append($("<div id=" + divEditarPropiedades + "/>").append(lstPropiedades));
+        $("#opcion-EditarPropiedad").append($("<div id=" + divEditarNavegacion + "/>").append(lstNavegacion));
+
+        //propiedades
+        for (i = 0; i < datos.propiedades.length; i++) {
+            lstPropiedades.append(generarItemCatalogo(datos.propiedades[i],false));
+        }
+
+        //navegacion
+        var paginaPrimera = $('<input/>').attr({
+            type: "button",
+            name: "primera",
+            value: 'primera'
+        }).click(function () {
+            parametros["pagina"] = 1;
+            cargarPropiedadesEditar(parametros);
+        });
+        var paginaAnterior = $('<input/>').attr({
+            type: "button",
+            name: "anterior",
+            value: 'anterior'
+        }).click(function () {
+            parametros["pagina"] = datos.paginaAnterior;
+            cargarPropiedadesEditar(parametros);
+        });
+        var paginaNumero = $('<span/>').text(parametros["pagina"]);
+        var paginaSiguiente = $('<input/>').attr({
+            type: "button",
+            name: "siguiente",
+            value: 'siguiente'
+        }).click(function () {
+            parametros["pagina"] = datos.paginaSiguiente;
+            cargarPropiedadesEditar(parametros);
+        });
+        var paginaUltima = $('<input/>').attr({
+            type: "button",
+            name: "ultima",
+            value: 'ultima'
+        }).click(function () {
+            parametros["pagina"] = datos.paginaUltima;
+            cargarPropiedadesEditar(parametros);
+        });
+        
+        lstNavegacion.append($("<li>").append(paginaPrimera));
+        lstNavegacion.append($("<li>").append(paginaAnterior));
+        lstNavegacion.append($("<li>").append(paginaNumero));
+        lstNavegacion.append($("<li>").append(paginaSiguiente));
+        lstNavegacion.append($("<li>").append(paginaUltima));
+    }).fail({
+        //hacer
+    });
 }

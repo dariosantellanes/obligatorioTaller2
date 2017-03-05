@@ -1,0 +1,21 @@
+#listadoOpcionesMantenimiento{
+    float: left;
+}
+
+#caja-opcionMantenimiento{
+    width: 61%;
+    margin: auto;
+}
+
+#listadoOpcionesMantenimiento ul{
+    list-style-type: none
+}
+
+#listadoOpcionesMantenimiento ul li button {
+    width: 160px;
+    height: 27px;
+}
+
+#listadoOpcionesMantenimiento ul li {
+    margin-top: 7px;
+}

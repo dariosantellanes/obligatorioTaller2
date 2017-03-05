@@ -4,13 +4,13 @@
     <div id="listadoOpcionesMantenimiento">
         <ul>
             <li><button id="btnAgregarPropiedad">Agregar propiedad</button></li>
-            <li><button>Editar propiedad</button></li>
+            <li><button id="btnEditarPropiedad">Editar propiedad</button></li>
             <li><button>Dar de baja propiedad</button></li>
         </ul>
     </div>
 
     <div id="caja-opcionMantenimiento">
-        <div id="opcion-AgregarMantenimiento" class="oculto">
+        <div id="opcion-AgregarPropiedad" class="oculto">
 
             <table id="datos-extas">
 
@@ -114,6 +114,10 @@
                 </tr>
             </table>
 
+        </div>
+        
+        <div id="opcion-EditarPropiedad" class="oculto">
+            
         </div>
     </div>
 </div>

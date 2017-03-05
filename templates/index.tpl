@@ -7,15 +7,20 @@
         <title>Altavista Inmobiliaria</title>
         <link rel="stylesheet" href="css/estilos.css" type="text/css"/>
         <link rel="stylesheet" href="css/estilosDelCarrusel.css" type="text/css"/>
+        <link rel="stylesheet" href="css/estilosMantenimientoPropiedades.css" type="text/css"/>
+        
         <script type="text/javascript" src="js/funciones.js"></script>
         <script type="text/javascript" src="js/validaciones.js"></script>
+        <script type="text/javascript" src="js/funcionesDelCarrusel.js"></script>
+        
         <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
         <script type="text/javascript" src="js/jquery.validate.min"></script>
         <script type="text/javascript" src="js/additional-methods.min"></script>
-        <script type="text/javascript" src="js/funcionesDelCarrusel.js"></script>
+        
         <script type = "text/javascript" >
             $(document).ready(inicializar);
         </script> 
+    
     </head>
 
     <body>
@@ -55,7 +60,7 @@
                         </ul>
                     </li>
                 {else}
-                    <li><button id="mantenimiento_boton_mostrar" class="boton">Mantenimiento de propiedades</button></li>
+                    <li><button id="mantenimiento_boton_mostrar" class="boton">Mantenimiento</button></li>
                     <li><button id="responder_preguntas_boton_mostrar" class="boton">Responder pregunas</button></li>
                     <li>
                         <form action = "login.php" method = "post">

@@ -6,6 +6,8 @@
 body {
     display: inline-block;
     min-width: 100%;
+    background-color: #F5F2EB;
+
 }
 
 #menu {
@@ -16,7 +18,7 @@ body {
     border-bottom:1px solid #000;
     border-radius: 0px 0px 4px 4px;
     box-shadow: 0 15px 18px -8px #000;
-    width: 100%;
+    min-width: 100%;
 }
 
 .nivel-principal{
