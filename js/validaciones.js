@@ -1,54 +1,5 @@
 function iniciarValidacionFormularios() {
 
-    var ingresoForm = $("#ingreso_form");
-    var ingresoFormMsg = $("#ingreso_form_msg");
-
-    var busquedaForm = $("#busqueda_form");
-    var busquedaFormMsg = $("#busqueda_form_msg");
-
-    var estadisticaForm = $("#estadistica_form");
-    var estadisticaFormMsg = $("#estadistica_form_msg");
-
-    var selBusquedaCiudad = busquedaForm.find(':input[name=ciudad]');
-    var selEstadisticaCiudad = estadisticaForm.find(':input[name=ciudad]');
-
-    var selBusquedaBarrio = busquedaForm.find(':input[name=barrio]');
-
-    //codigo para poblar selectores
-    $.ajax({
-        type: "GET",
-        url: "utilidad.php",
-        dataType: 'json',
-        //timeout: 5000,
-        data: {accion: "poblarCiudades"}
-    }).done(function (datos) {
-        poblarSelector(datos, selBusquedaCiudad, "----Ciudad----");
-        poblarSelector(datos, selEstadisticaCiudad, "----Ciudad----");
-    }).fail(function () {
-        poblarSelector(null, selBusquedaCiudad, "----Ciudad----");
-        poblarSelector(null, selEstadisticaCiudad, "----Ciudad----");        //mas cosas
-    }).always(function () {
-        selEstadisticaCiudad.change();
-        selBusquedaCiudad.change();
-    });
-
-    selBusquedaCiudad.change(function () {
-        var ciudad = $(this).val();
-        $.ajax({
-            type: "GET",
-            url: "utilidad.php",
-            dataType: 'json',
-            //timeout: 5000,
-            data: {accion: "poblarBarrios", ciudad: ciudad}
-        }).done(function (datos) {
-            poblarSelector(datos, selBusquedaBarrio, "----Barrio----");
-        }).fail(function () {
-            poblarSelector(null, selBusquedaBarrio, "----Barrio----");
-            //mas cosas
-        });
-    });
-
-
     ingresoForm.validate({
         focusInvalid: false,
         errorLabelContainer: ingresoFormMsg.find("ul"),

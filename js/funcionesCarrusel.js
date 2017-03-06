@@ -4,7 +4,7 @@ var cantidadTotalNumeros = 4;
 var listaPaginaCasas = [["casa-1", "casa-2", "casa-3", "casa-4"], ["casa-5", "casa-6", "casa-7"]];
 
 
-function inicioCarrusel() {
+function iniciarCarrusel() {
     $("#icono-next").click(hiceClickAdelante);
     $("#icono-previous").click(hiceClickAtras);
     $(".numerosImagenesCarrusel").click(hiceClickEnNumero);

@@ -11,19 +11,20 @@
         <link rel="stylesheet" href="css/estilosBusqueda.css" type="text/css"/>
         <link rel="stylesheet" href="css/estilosEstadisticas.css" type="text/css"/>
 
-        
+
         <script type="text/javascript" src="js/funciones.js"></script>
         <script type="text/javascript" src="js/validaciones.js"></script>
+        <script type="text/javascript" src="js/selectores.js"></script>
         <script type="text/javascript" src="js/funcionesCarrusel.js"></script>
-        
+
         <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
         <script type="text/javascript" src="js/jquery.validate.min"></script>
         <script type="text/javascript" src="js/additional-methods.min"></script>
-        
+
         <script type = "text/javascript" >
             $(document).ready(inicializar);
         </script> 
-    
+
     </head>
 
     <body>

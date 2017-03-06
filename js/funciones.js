@@ -1,10 +1,17 @@
 function inicializar() {
 
-    inicioCarrusel();
-    iniciarValidacionFormularios();
+    ingresoForm = $("#ingreso_form");
+    ingresoFormMsg = $("#ingreso_form_msg");
 
-    cargarSelectHabitacionesBaños("cantidad-habitaciones");
-    cargarSelectHabitacionesBaños("cantidad-baños");
+    busquedaForm = $("#busqueda_form");
+    busquedaFormMsg = $("#busqueda_form_msg");
+
+    estadisticaForm = $("#estadistica_form");
+    estadisticaFormMsg = $("#estadistica_form_msg");
+
+    iniciarCarrusel();
+    iniciarValidacionFormularios();
+    iniciarSelectores();
 
     $(".oculto").hide();
     $("#inicio_pestania").show();
@@ -48,17 +55,7 @@ function inicializar() {
         $("#opcion-AgregarPropiedad").show();
     });
 
-    $("#ciudad").change(function () {
-        $.ajax({
-            type: "POST",
-            url: "mantenimiento.php",
-            dataType: 'json',
-            data: {accion: "cambio-ciudad", ciudadSeleccionada: this.value}
-        }).done(function (datos) {
 
-            cargarSelectBarrios(datos.nuevosBarrios);
-        });
-    });
 
     $("#btnAceptarMantenimiento").click(function () {
         todosLosCamposCorrectos();
@@ -93,13 +90,6 @@ function inicializar() {
     });
 }
 
-function vecSerAObjeto(vectorSerializado) {
-    objeto = {};
-    for (var i = 0; i < vectorSerializado.length; i++) {
-        objeto[vectorSerializado[i]['name']] = vectorSerializado[i]['value'];
-    }
-    return objeto;
-}
 
 function cargarPropiedadesBusqueda(parametros) {
     var divContenedor = $("#busqueda_resultado");
@@ -125,9 +115,9 @@ function cargarPropiedadesBusqueda(parametros) {
         var divNavegacion = $("<div/>").attr({
             id: divContenedor.attr('id') + "_navegacion"
         });
-        
+
         $(divOrden).append($("<span>Ordenar Por:</span>"));
-        
+
         $(divOrden).append(generarOrdenamiento(datos.orden, parametros, cargarPropiedadesBusqueda));
         $(divPropiedades).append(generarCatalogoBusqueda(datos.propiedades));
         $(divNavegacion).append(generarNavegacion(datos.navegacion, parametros, cargarPropiedadesBusqueda));
@@ -191,15 +181,6 @@ function cargarEstadisticas(parametros) {
 }
 
 
-function cargarSelectHabitacionesBaños(idSelectAcargar) {
-    for (var i = 1; i <= 100; i++) {
-        var opcion = $("<option />");
-        opcion.attr("value", i);
-        opcion.text(i);
-        $("#" + idSelectAcargar).append(opcion);
-    }
-}
-
 function todosLosCamposCorrectos() {
     var valorPrecio = $("#precio").val();
     var valorMetrosCuadrados = $("#metros-cuadrados").val();
@@ -221,41 +202,6 @@ function validaCampoVacio(campo) {
     }
 
     return true;
-}
-
-function cargarSelectCiudad(listaCiudades) {
-    $("#ciudad").empty();
-    for (i in listaCiudades) {
-        var ciudad = listaCiudades[i];
-        var opcion = $("<option />");
-        opcion.attr("value", ciudad["id"]);
-        opcion.text(ciudad["nombre"]);
-
-        $("#ciudad").append(opcion);
-
-    }
-}
-
-function cargarSelectBarrios(listaBarrios) {
-    $("#barrio").empty();
-    for (i in listaBarrios) {
-        var barrio = listaBarrios[i];
-        var opcion = $("<option />");
-        opcion.attr("value", barrio["id"]);
-        opcion.text(barrio["nombre"]);
-
-        $("#barrio").append(opcion);
-
-    }
-}
-function poblarSelector(datos, selector, defecto) {
-    selector.empty();
-    selector.append($("<option />").val("").text(defecto));
-    if (datos != null) {
-        for (i = 0; i < datos.length; i++) {
-            selector.append($("<option />").val(datos[i].value).text(datos[i].text));
-        }
-    }
 }
 
 function generarOrdenamiento(orden, parametros, accion) {
@@ -406,4 +352,13 @@ function generarCatalogoEdicion(propiedades) {
         lstPropiedades.append(li);
     }
     return lstPropiedades;
+}
+
+//esta funcion toma un form serializado y lo convierte en un objeto
+function vecSerAObjeto(vectorSerializado) {
+    objeto = {};
+    for (var i = 0; i < vectorSerializado.length; i++) {
+        objeto[vectorSerializado[i]['name']] = vectorSerializado[i]['value'];
+    }
+    return objeto;
 }
